@@ -12,13 +12,22 @@ public class NovaHra {
 
     public void nacitajHracov(){
         this.pocetHracov= vstup.readInt("zadaj pocet hracov: ");
-        zoznamHracov= new ArrayList<Hrac>(pocetHracov);
+        this.zoznamHracov= new ArrayList<Hrac>(pocetHracov);
 
         System.out.println("bude hrat "+pocetHracov+ " hracov");
 
-        for(int i= 0; i< pocetHracov; i++){
+        String meno;
+        int suma= 0;
 
+        for(int i= 0; i< pocetHracov; i++){
+            Hrac novyHrac= new Hrac();
+            meno= vstup.readString("zadaj meno " +(i+1) + ". hraca: ");
+            novyHrac.setMeno(meno);
+            novyHrac.setSuma(suma);
+
+            zoznamHracov.add(novyHrac);
         }
+
     }
 
     public void generSachovnicu(){}
