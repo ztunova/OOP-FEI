@@ -1,8 +1,11 @@
 package sk.stuba.fei.uim.oop;
 
 public class Hrac {
-    String meno;
-    double suma;
+    private String meno;
+    private double suma;
+    private int pozicia;
+
+    public void hodKockou(){}
 
     public void setMeno(String meno) {
         this.meno = meno;
