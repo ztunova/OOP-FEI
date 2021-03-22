@@ -1,6 +1,8 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.hraciaPlocha;
 
-public class Uvaznenie extends RohovePolicko{
+import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
+
+public class Uvaznenie extends RohovePolicko {
     int pocetKol;
 
     @Override
