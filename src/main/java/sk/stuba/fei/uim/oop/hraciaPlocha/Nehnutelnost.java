@@ -20,10 +20,10 @@ public class Nehnutelnost extends Policko {
             System.out.println("zvolil si: "+ volba);
             switch (volba){
                 case 'A':
+                    this.majitel= stojiTam;
+                    this.majitel.zaplatCenu(kupnaCena);
                     System.out.println("Prave si kupil nehnutelnost");
-                    //this.stojiTam.zaplatCenu(this.kupnaCena);
                     this.kupena= true;
-                   // this.majitel= this.stojiTam;
                     break;
                 case 'N':
                     System.out.println("Rozhodol si sa nekupit nehnutelnost.");
@@ -34,9 +34,9 @@ public class Nehnutelnost extends Policko {
         }
         else{
             System.out.println("Tato nehnutelnost nie je na predaj. ");
-            System.out.println("Majitel: ");
+            System.out.println("Majitel: "+ majitel.getMeno());
             System.out.println("Musis mu zaplatit stojne "+ this.stojne);
-            //na tahu. zaplat stojne
+            //na tahu. zaplat stojne, majitel. pripis na ucet
         }
 
     }

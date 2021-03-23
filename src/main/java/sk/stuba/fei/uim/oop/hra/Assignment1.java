@@ -12,8 +12,8 @@ public class Assignment1 {
         int pokus= vstup.readInt("ciselny vstup: ");
         System.out.println(pokus);*/
 
-        //NovaHra hra= new NovaHra();
-       // hra.zacniHru();
+        NovaHra hra= new NovaHra();
+        hra.zacniHru();
        // hra.nacitajHracov();
        // Random rand= new Random();
 
@@ -29,7 +29,7 @@ public class Assignment1 {
         Uvaznenie vazenie= new Uvaznenie(2, "Druhe","pokusne 2" ,30.0, 3);*/
         //System.out.println("pomoc");
 
-        Policko policko= new RohovePolicko(1, "Start", "Popis1", 500);
+        /*Policko policko= new RohovePolicko(1, "Start", "Popis1", 500);
         Policko dan= new RohovePolicko(1, "Platba dane", "Popis2", 200);
         Policko dom= new Nehnutelnost(250, 50);
         Hrac hrac= new Hrac();
@@ -41,6 +41,7 @@ public class Assignment1 {
         System.out.println(hrac.getUcet());
         dan.akciaPolicka();
         System.out.println(hrac.getUcet());
-        dom.akciaPolicka();
+        dom.akciaPolicka();*/
+
     }
 }

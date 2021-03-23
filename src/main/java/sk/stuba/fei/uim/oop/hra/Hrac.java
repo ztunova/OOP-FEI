@@ -5,7 +5,14 @@ public class Hrac {
     private double ucet;
     private int pozicia;
 
-    public void hodKockou(){}
+    public int posunSa(int oKolko){
+        this.pozicia= this.pozicia + oKolko;
+        if (pozicia >= 24){
+            System.out.println("prechadzam startom");
+            this.pozicia= this.pozicia %24;
+        }
+        return pozicia;
+    }
 
     public void zaplatCenu(double cena){
         this.ucet= this.ucet- cena;
@@ -15,12 +22,12 @@ public class Hrac {
         this.ucet= this.ucet + suma;
     }
 
-    public void setMeno(String meno) {
-        this.meno = meno;
-    }
-
     public void setSuma(double sUcet) {
         this.ucet = sUcet;
+    }
+
+    public void setMeno(String meno) {
+        this.meno = meno;
     }
 
     public String getMeno() {
@@ -29,5 +36,9 @@ public class Hrac {
 
     public double getUcet() {
         return ucet;
+    }
+
+    public int getPozicia() {
+        return pozicia;
     }
 }

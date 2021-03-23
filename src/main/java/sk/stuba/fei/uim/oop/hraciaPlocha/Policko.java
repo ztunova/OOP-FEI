@@ -10,6 +10,10 @@ public abstract class Policko {
 
     public abstract void akciaPolicka();
 
+    public String getMeno() {
+        return meno;
+    }
+
     public void setStojiTam(Hrac stojiTam) {
         this.stojiTam = stojiTam;
     }

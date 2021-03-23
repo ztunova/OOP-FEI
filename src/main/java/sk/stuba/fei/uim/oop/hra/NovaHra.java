@@ -6,9 +6,11 @@ import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
 import sk.stuba.fei.uim.oop.hraciaPlocha.Sance;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class NovaHra {
     Zklavesnice vstup;
+    Random kocka;
     int pocetHracov;
     ArrayList<Hrac> zoznamHracov;
     ArrayList<Policko> sachovnica;
@@ -16,7 +18,7 @@ public class NovaHra {
     //ArrayList<Sance> odhadzovaciBalicek;
     //kocka?
 
-    public void nacitajHracov(){
+    private void nacitajHracov(){
         this.pocetHracov= vstup.readInt("zadaj pocet hracov: ");
         this.zoznamHracov= new ArrayList<Hrac>(pocetHracov);
 
@@ -36,7 +38,7 @@ public class NovaHra {
 
     }
 
-    public void generSachovnicu(){
+    private void generSachovnicu(){
         this.sachovnica= new ArrayList<Policko>(24);
         String[] mena = {"Start", "Vazenie", "Policia", "Platba dane"};
         String[] popisy = {"Presiel si startom, dostanes ", "Stojis 1 kolo", "Stojis ", "Musis zaplatit dan "};
@@ -75,10 +77,42 @@ public class NovaHra {
 
     public void zacniHru(){
         generSachovnicu();
-        //nacitajHracov();
+        nacitajHracov();
+
+        int i, hodKockou, novaPoz;
+        int pocitadlo= 0;
+        Hrac naTahu;
+        Policko stojiNa;
+
+        for (i= 0; i< 6; i++){
+            naTahu= zoznamHracov.get(pocitadlo%pocetHracov);
+            System.out.println("Na tahu je hrac: " +naTahu.getMeno());
+            System.out.println("Aktualna pozicia: "+ naTahu.getPozicia());
+
+            hodKockou= kocka.nextInt(5)+1;
+            System.out.println("Na kocke padlo: " +hodKockou);
+
+            novaPoz= naTahu.posunSa(hodKockou);
+            stojiNa= sachovnica.get(novaPoz%24);
+            stojiNa.setStojiTam(naTahu);
+            System.out.println("Nova pozicia: "+ naTahu.getPozicia());
+            System.out.println("Policko "+ stojiNa.getMeno());
+
+            if (stojiNa instanceof Nehnutelnost){
+                stojiNa.akciaPolicka();
+            }
+            else{
+                System.out.println("Nestojis na nehnutelnosti");
+            }
+
+            pocitadlo++;
+            System.out.println("Zostatok na ucte: "+ naTahu.getUcet());
+            System.out.println("-----------------------------------------");
+        }
     }
 
     public NovaHra(){
         this.vstup= new Zklavesnice();
+        this.kocka= new Random();
     }
 }
