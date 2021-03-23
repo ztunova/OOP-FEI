@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class NovaHra {
-    Zklavesnice vstup;
-    Random random;
+    public Zklavesnice vstup;
+    public Random random;
     int pocetHracov;
+    int hracovVHre;
     ArrayList<Hrac> zoznamHracov;
     ArrayList<Policko> sachovnica;
     //ArrayList<Sance> tahaciBalicek;
@@ -80,6 +81,7 @@ public class NovaHra {
     public void zacniHru(){
         generSachovnicu();
         nacitajHracov();
+        this.hracovVHre= pocetHracov;
 
         int i, hodKockou, novaPoz;
         int pocitadlo= 0;
@@ -87,38 +89,54 @@ public class NovaHra {
         Policko stojiNa;
 
         //for (i= 0; i< 3; i++){
-        while(zoznamHracov.size() > 1){
+        while(hracovVHre != 1){
 
             for (Hrac naTahu : zoznamHracov) {
-                //naTahu= zoznamHracov.get(pocitadlo%(zoznamHracov.size()));
-                System.out.println("Na tahu je hrac: " + naTahu.getMeno());
+                if(naTahu.isvHre()) {
+                    //naTahu= zoznamHracov.get(pocitadlo%(zoznamHracov.size()));
+                /*System.out.println("Na tahu je hrac: " + naTahu.getMeno());
                 System.out.println("Zostatok na ucte: " + naTahu.getUcet());
-                System.out.println("Aktualna pozicia: " + naTahu.getPozicia());
+                System.out.println("Aktualna pozicia: " + naTahu.getPozicia());*/
 
-                hodKockou = random.nextInt(5) + 1;
-                System.out.println("Na kocke padlo: " + hodKockou);
+                    hodKockou = random.nextInt(5) + 1;
+                    //System.out.println("Na kocke padlo: " + hodKockou);
 
-                novaPoz = naTahu.posunSa(hodKockou);
+                    //novaPoz = naTahu.posunSa(hodKockou);
+                    naTahu.posunSa(hodKockou);
+                    novaPoz = naTahu.getPozicia();
 
-                stojiNa = sachovnica.get(novaPoz % 24);
-                stojiNa.setStojiTam(naTahu);
-                System.out.println("Nova pozicia: " + naTahu.getPozicia());
-                System.out.println("Policko " + stojiNa.getMeno());
+                    stojiNa = sachovnica.get(novaPoz);
+                    stojiNa.setStojiTam(naTahu);
+                    //naTahu.setPolicko(stojiNa);
 
-                if (stojiNa instanceof Uvaznenie) {
-                    int pocetKol = random.nextInt(5) + 1;
-                    ((Uvaznenie) stojiNa).setPocetKol(pocetKol);
+                    //System.out.println("Nova pozicia: " + naTahu.getPozicia());
+                    System.out.println("Policko " + stojiNa.getMeno());
+
+                    if (stojiNa instanceof Uvaznenie) {
+                        int pocetKol = random.nextInt(5) + 1;
+                        ((Uvaznenie) stojiNa).setPocetKol(pocetKol);
+                    }
+
+                    stojiNa.akciaPolicka();
+
+                    if (naTahu.isBankrot()) {
+                        //zoznamHracov.remove(naTahu);
+                        naTahu.setvHre(false);
+                        hracovVHre = hracovVHre - 1;
+                        //System.out.println("Hrac odstraneny");
+                    } else {
+                        //pocitadlo++;
+                        System.out.println("Zostatok na ucte: " + naTahu.getUcet());
+                    }
+                    System.out.println("-----------------------------------------");
                 }
+            }
+        }
 
-                stojiNa.akciaPolicka();
-                if (naTahu.isBankrot()) {
-                    zoznamHracov.remove(naTahu);
-                }
-                else {
-                    //pocitadlo++;
-                    System.out.println("Zostatok na ucte: " + naTahu.getUcet());
-                }
-                System.out.println("-----------------------------------------");
+        System.out.println("---------------KONIEC HRY----------------");
+        for (Hrac vitaz : zoznamHracov) {
+            if(vitaz.isvHre()) {
+                System.out.println("Gratulujem, vyhral hrac: " + zoznamHracov.get(0).getMeno());
             }
         }
     }
