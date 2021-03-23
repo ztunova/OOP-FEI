@@ -9,10 +9,14 @@ public class RohovePolicko extends Policko {
     public void akciaPolicka() {
         double povodnaSuma= this.stojiTam.getUcet();
         if(this.meno.equals("Start")){
-            povodnaSuma= povodnaSuma + this.suma;
-            this.stojiTam.setSuma(povodnaSuma);
+            this.stojiTam.pripisNaUcet(suma);
         }
         else if (this.meno.equals("Platba dane")){
+            if(suma > stojiTam.getUcet()){
+                System.out.println("Nemas na zaplatenie dane. Zbankrotoval si, vypadavas z hry.");
+                stojiTam.setBankrot(true);
+                return;
+            }
             this.stojiTam.zaplatCenu(this.suma);
         }
         else{

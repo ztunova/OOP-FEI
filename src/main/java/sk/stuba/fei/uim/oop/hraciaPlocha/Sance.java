@@ -8,7 +8,8 @@ public class Sance extends Policko {
     String akcia;
 
     @Override
-    public void akciaPolicka() {}
+    public void akciaPolicka() {
+    }
 
     public void akciaSance(ArrayList<Hrac> zoznamHracov){
         System.out.println("");

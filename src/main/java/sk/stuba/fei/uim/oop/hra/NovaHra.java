@@ -1,9 +1,6 @@
 package sk.stuba.fei.uim.oop.hra;
 
-import sk.stuba.fei.uim.oop.hraciaPlocha.Nehnutelnost;
-import sk.stuba.fei.uim.oop.hraciaPlocha.Policko;
-import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
-import sk.stuba.fei.uim.oop.hraciaPlocha.Sance;
+import sk.stuba.fei.uim.oop.hraciaPlocha.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -60,7 +57,8 @@ public class NovaHra {
                     novePolicko= new RohovePolicko(i, mena[ktory], popisy[ktory], suma);
                 }
                 else {
-                    novePolicko = new RohovePolicko(i, mena[ktory], popisy[ktory]);
+                    //policia
+                    novePolicko = new Uvaznenie(i, mena[ktory], popisy[ktory]);
                 }
                 ktory++;
             }
@@ -85,34 +83,43 @@ public class NovaHra {
 
         int i, hodKockou, novaPoz;
         int pocitadlo= 0;
-        Hrac naTahu;
+        //Hrac naTahu;
         Policko stojiNa;
 
-        for (i= 0; i< 6; i++){
-            naTahu= zoznamHracov.get(pocitadlo%pocetHracov);
-            System.out.println("Na tahu je hrac: " +naTahu.getMeno());
-            System.out.println("Zostatok na ucte: "+ naTahu.getUcet());
-            System.out.println("Aktualna pozicia: "+ naTahu.getPozicia());
+        //for (i= 0; i< 3; i++){
+        while(zoznamHracov.size() > 1){
 
-            hodKockou= random.nextInt(5)+1;
-            System.out.println("Na kocke padlo: " +hodKockou);
+            for (Hrac naTahu : zoznamHracov) {
+                //naTahu= zoznamHracov.get(pocitadlo%(zoznamHracov.size()));
+                System.out.println("Na tahu je hrac: " + naTahu.getMeno());
+                System.out.println("Zostatok na ucte: " + naTahu.getUcet());
+                System.out.println("Aktualna pozicia: " + naTahu.getPozicia());
 
-            novaPoz= naTahu.posunSa(hodKockou);
-            stojiNa= sachovnica.get(novaPoz%24);
-            stojiNa.setStojiTam(naTahu);
-            System.out.println("Nova pozicia: "+ naTahu.getPozicia());
-            System.out.println("Policko "+ stojiNa.getMeno());
+                hodKockou = random.nextInt(5) + 1;
+                System.out.println("Na kocke padlo: " + hodKockou);
 
-            if (stojiNa instanceof Nehnutelnost){
+                novaPoz = naTahu.posunSa(hodKockou);
+
+                stojiNa = sachovnica.get(novaPoz % 24);
+                stojiNa.setStojiTam(naTahu);
+                System.out.println("Nova pozicia: " + naTahu.getPozicia());
+                System.out.println("Policko " + stojiNa.getMeno());
+
+                if (stojiNa instanceof Uvaznenie) {
+                    int pocetKol = random.nextInt(5) + 1;
+                    ((Uvaznenie) stojiNa).setPocetKol(pocetKol);
+                }
+
                 stojiNa.akciaPolicka();
+                if (naTahu.isBankrot()) {
+                    zoznamHracov.remove(naTahu);
+                }
+                else {
+                    //pocitadlo++;
+                    System.out.println("Zostatok na ucte: " + naTahu.getUcet());
+                }
+                System.out.println("-----------------------------------------");
             }
-            else{
-                System.out.println("Nestojis na nehnutelnosti");
-            }
-
-            pocitadlo++;
-            System.out.println("Zostatok na ucte: "+ naTahu.getUcet());
-            System.out.println("-----------------------------------------");
         }
     }
 
