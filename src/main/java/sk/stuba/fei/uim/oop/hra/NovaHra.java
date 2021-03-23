@@ -112,12 +112,14 @@ public class NovaHra {
                     //System.out.println("Nova pozicia: " + naTahu.getPozicia());
                     System.out.println("Policko " + stojiNa.getMeno());
 
-                    if (stojiNa instanceof Uvaznenie) {
+                    /*if (stojiNa instanceof Uvaznenie) {
                         int pocetKol = random.nextInt(5) + 1;
                         ((Uvaznenie) stojiNa).setPocetKol(pocetKol);
-                    }
+                    }*/
 
-                    stojiNa.akciaPolicka();
+                    if(naTahu.getKolVoVazeni() == 0) {
+                        stojiNa.akciaPolicka();
+                    }
 
                     if (naTahu.isBankrot()) {
                         //zoznamHracov.remove(naTahu);

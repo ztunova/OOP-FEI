@@ -14,7 +14,7 @@ public class Hrac {
     public void posunSa(int oKolko){
         if(kolVoVazeni > 0){
             this.informuj();
-            this.kolVoVazeni= this.kolVoVazeni -1;
+            this.kolVoVazeni--;
             System.out.println("Vo vazeni este na "+ kolVoVazeni + " kol.");
         }
         if(kolVoVazeni == 0) {
@@ -72,6 +72,10 @@ public class Hrac {
 
     public void setKolVoVazeni(int kolVoVazeni) {
         this.kolVoVazeni = kolVoVazeni;
+    }
+
+    public int getKolVoVazeni() {
+        return kolVoVazeni;
     }
 
     public void setSuma(double sUcet) {

@@ -2,12 +2,16 @@ package sk.stuba.fei.uim.oop.hraciaPlocha;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
 
+import java.util.Random;
+
 public class Uvaznenie extends RohovePolicko {
     int pocetKol;
 
     @Override
     public void akciaPolicka() {
         if(meno.equals("Policia")){
+            Random random= new Random();
+            this.pocetKol= random.nextInt(5)+1;
             System.out.println("Ides do vazenia na "+ pocetKol + " kol.");
 
             stojiTam.setPozicia(6);
