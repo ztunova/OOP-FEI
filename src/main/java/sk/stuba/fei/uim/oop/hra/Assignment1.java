@@ -5,6 +5,9 @@ import sk.stuba.fei.uim.oop.hraciaPlocha.Nehnutelnost;
 import sk.stuba.fei.uim.oop.hraciaPlocha.Policko;
 import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Assignment1 {
     public static void main(String[] args) {
         /*
@@ -42,6 +45,10 @@ public class Assignment1 {
         dan.akciaPolicka();
         System.out.println(hrac.getUcet());
         dom.akciaPolicka();*/
+
+        /*double num = 1.34567;
+        System.out.println(num);
+        System.out.format("%.2f", num);*/
 
     }
 }

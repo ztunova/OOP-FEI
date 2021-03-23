@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class NovaHra {
     Zklavesnice vstup;
-    Random kocka;
+    Random random;
     int pocetHracov;
     ArrayList<Hrac> zoznamHracov;
     ArrayList<Policko> sachovnica;
@@ -44,16 +44,18 @@ public class NovaHra {
         String[] popisy = {"Presiel si startom, dostanes ", "Stojis 1 kolo", "Stojis ", "Musis zaplatit dan "};
         int ktory= 0;
 
-        double suma;
+        double suma, stojne;
         Policko novePolicko;
 
         for(int i= 0; i< 24; i++){
             if(i% 6 == 0){
                 if(i== 0){
+                    //cena pri prechode startom
                     suma= 2000;
                     novePolicko= new RohovePolicko(i, mena[ktory], popisy[ktory], suma);
                 }
                 else if (i == 18){
+                    //platba dane
                     suma= 900;
                     novePolicko= new RohovePolicko(i, mena[ktory], popisy[ktory], suma);
                 }
@@ -66,7 +68,9 @@ public class NovaHra {
                 novePolicko= new Sance(i, "Sanca", "Tahas si kartu");
             }
             else{
-                novePolicko= new Nehnutelnost(i, "Nehnutelnost", "Policko nehnutelnosti");
+                suma= random.nextInt(5000)+1000;
+                stojne= random.nextInt(2000)+500;
+                novePolicko= new Nehnutelnost(i, "Nehnutelnost", "Policko nehnutelnosti", suma, stojne);
             }
 
             sachovnica.add(novePolicko);
@@ -87,9 +91,10 @@ public class NovaHra {
         for (i= 0; i< 6; i++){
             naTahu= zoznamHracov.get(pocitadlo%pocetHracov);
             System.out.println("Na tahu je hrac: " +naTahu.getMeno());
+            System.out.println("Zostatok na ucte: "+ naTahu.getUcet());
             System.out.println("Aktualna pozicia: "+ naTahu.getPozicia());
 
-            hodKockou= kocka.nextInt(5)+1;
+            hodKockou= random.nextInt(5)+1;
             System.out.println("Na kocke padlo: " +hodKockou);
 
             novaPoz= naTahu.posunSa(hodKockou);
@@ -113,6 +118,6 @@ public class NovaHra {
 
     public NovaHra(){
         this.vstup= new Zklavesnice();
-        this.kocka= new Random();
+        this.random= new Random();
     }
 }
