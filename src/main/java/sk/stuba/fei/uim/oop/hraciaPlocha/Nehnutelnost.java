@@ -19,8 +19,8 @@ public class Nehnutelnost extends Policko {
                 return;
             }
 
-            Zklavesnice vstup= new Zklavesnice();
-            char volba= vstup.readChar("Stlac A ak nehnutelnost chces kupit, ak nie, stlac N");
+            //Zklavesnice vstup= new Zklavesnice();
+            char volba= Zklavesnice.readChar("Stlac A ak nehnutelnost chces kupit, ak nie, stlac N");
             volba= Character.toUpperCase(volba);
             System.out.println("zvolil si: "+ volba);
             switch (volba){

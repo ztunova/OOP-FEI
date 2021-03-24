@@ -1,13 +1,16 @@
 package sk.stuba.fei.uim.oop.karty;
 
 import sk.stuba.fei.uim.oop.hra.Hrac;
+import sk.stuba.fei.uim.oop.hra.Zklavesnice;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Karty {
     protected String druh;
     protected String popisAkcie;
     protected Hrac ktoVytiahol;
+    protected Random random;
 
     public abstract void akciaKarty();
 
@@ -18,9 +21,12 @@ public abstract class Karty {
     public Karty(String meno, String popis){
         this.druh= meno;
         this.popisAkcie= popis;
+        this.random= new Random();
     }
 
-    public Karty(){}
+    public Karty(){
+        this.random= new Random();
+    }
 
     /*public void akciaSance(ArrayList<Hrac> zoznamHracov){
         System.out.println("");
