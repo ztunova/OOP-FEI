@@ -76,7 +76,9 @@ public class NovaHra {
         }
     }
 
-    public void generKarty(){}
+    public void generKarty(){
+
+    }
 
     public void zacniHru(){
         generSachovnicu();
