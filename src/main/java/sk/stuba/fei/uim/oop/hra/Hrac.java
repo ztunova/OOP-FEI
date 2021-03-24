@@ -21,8 +21,8 @@ public class Hrac {
             this.informuj(oKolko);
             this.pozicia = this.pozicia + oKolko;
             if (pozicia >= 24) {
-                System.out.println("Presiel si startom. ");
-                //this.ucet= ucet+
+                System.out.println("Pripisujem na ucet za prechod startom");
+                this.pripisNaUcet(2000);
                 this.pozicia = this.pozicia % 24;
             }
             System.out.println("Nova pozicia: " + pozicia);

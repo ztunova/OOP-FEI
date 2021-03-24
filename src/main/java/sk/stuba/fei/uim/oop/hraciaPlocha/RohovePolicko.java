@@ -10,7 +10,7 @@ public class RohovePolicko extends Policko {
         double povodnaSuma= this.stojiTam.getUcet();
         if(this.meno.equals("Start")){
             System.out.println("Presiel si startom");
-            this.stojiTam.pripisNaUcet(suma);
+            //this.stojiTam.pripisNaUcet(suma);
         }
         else /*if (this.meno.equals("Platba dane"))*/{
             System.out.println("Platba dane "+ suma + " korun");
