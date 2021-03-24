@@ -9,4 +9,11 @@ public class Bitka extends Karty{
         this.ktoVytiahol.zaplatCenu(500);
         this.ktoVytiahol.setKolVoVazeni(1);
     }
+
+    public Bitka(String popis, String meno){
+        this.popisAkcie= popis;
+        this.druh= meno;
+    }
+
+    public Bitka(){}
 }

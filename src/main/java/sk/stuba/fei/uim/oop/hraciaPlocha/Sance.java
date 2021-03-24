@@ -16,6 +16,11 @@ public class Sance extends Policko {
 
     public void zamiesajKarty(){}
 
+    public Sance(int poradoveCislo, String meno, String popis, ArrayList<Karty> balicek) {
+        super(poradoveCislo, meno, popis);
+        this.odhadzovaciBalicek= balicek;
+    }
+
     public Sance(int poradoveCislo, String meno, String popis) {
         super(poradoveCislo, meno, popis);
     }

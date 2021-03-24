@@ -49,4 +49,11 @@ public class Krizovatka extends Karty{
         this.prava= random.nextBoolean();
         this.lava= !prava;
     }
+
+    public Krizovatka(String popis, String meno){
+        this.popisAkcie= popis;
+        this.druh= meno;
+    }
+
+    public Krizovatka(){}
 }

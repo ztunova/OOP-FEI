@@ -1,6 +1,10 @@
 package sk.stuba.fei.uim.oop.hra;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.*;
+import sk.stuba.fei.uim.oop.karty.Bitka;
+import sk.stuba.fei.uim.oop.karty.Karty;
+import sk.stuba.fei.uim.oop.karty.Krizovatka;
+import sk.stuba.fei.uim.oop.karty.Narodeniny;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -37,6 +41,7 @@ public class NovaHra {
     }
 
     private void generSachovnicu(){
+        ArrayList<Karty> balicek= generKarty();
         this.sachovnica= new ArrayList<Policko>(24);
         String[] mena = {"Start", "Vazenie", "Policia", "Platba dane"};
         String[] popisy = {"Presiel si startom, dostanes ", "Stojis 1 kolo", "Stojis ", "Musis zaplatit dan "};
@@ -64,7 +69,7 @@ public class NovaHra {
                 ktory++;
             }
             else if (i% 6 == 3){
-                novePolicko= new Sance(i, "Sanca", "Tahas si kartu");
+                novePolicko= new Sance(i, "Sanca", "Tahas si kartu", balicek);
             }
             else{
                 suma= random.nextInt(5000)+1000;
@@ -76,8 +81,25 @@ public class NovaHra {
         }
     }
 
-    public void generKarty(){
+    private ArrayList<Karty> generKarty(){
+        ArrayList<Karty> balicek= new ArrayList<Karty>(5);
+        String popisNarodeniny= "Vsetko najlepsie k narodeninam! Ako darcek dostanes 400 kroun od kazdeho hraca, " +
+                                "ktory ma na ucte viac ako 400 korun";
+        String popisKrizovatka= "Stojis pred dolezitym rozhodnutim. Pred tebou je krizovatka. Mozes pokracovat" +
+                " bud lavou alebo pravou cestou. Volba je na tebe ale vyberaj pozorne. Jedna cesta ta zavedie dalej" +
+                "ale ta druha je slepa a budes sa musiet vratit. ";
+        String poisBitka= "Niekto sa tu tusim pobil. Nabuduce chod do ringu, tam je to legalne. No a pre tento raz" +
+                "zaplat pokutu 500 korun";
 
+        Karty narode= new Narodeniny(this.zoznamHracov, popisNarodeniny, "Narodeniny");
+        Karty bitka= new Bitka(poisBitka, "Bitka");
+        Karty krizovatka= new Krizovatka(popisKrizovatka, "Krizovatka");
+
+        balicek.add(narode);
+        balicek.add(bitka);
+        balicek.add(krizovatka);
+
+        return balicek;
     }
 
     public void zacniHru(){

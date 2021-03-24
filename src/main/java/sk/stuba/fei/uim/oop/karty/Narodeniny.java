@@ -19,7 +19,9 @@ public class Narodeniny extends Karty{
         }
     }
 
-    public Narodeniny(ArrayList<Hrac> hraci){
+    public Narodeniny(ArrayList<Hrac> hraci, String popis, String meno){
+        this.popisAkcie= popis;
+        this.druh= meno;
         this.zoznamHracov= hraci;
     }
 
