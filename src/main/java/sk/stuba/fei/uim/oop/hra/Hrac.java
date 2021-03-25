@@ -7,14 +7,15 @@ public class Hrac {
     private double ucet;
     private int pozicia;
     private int kolVoVazeni;
-    boolean bankrot;
-    boolean vHre;
-    boolean kaucia;
-    boolean stojneZdarma;
+    private boolean bankrot;
+    private boolean vHre;
+    private boolean kaucia;
+    private boolean stojneZdarma;
 
     public void posunSa(int oKolko){
-        if(kolVoVazeni > 0){
-            if(kaucia){
+        if(kolVoVazeni > 1){
+            stravKoloVoVazeni();
+            /*if(kaucia){
                 Random random= new Random();
                 double cena= random.nextInt(2100)+400;
                 System.out.println("Mas moznost vykupit sa z vazenia.");
@@ -29,9 +30,13 @@ public class Hrac {
             }
             this.informuj();
             this.kolVoVazeni--;
-            System.out.println("Vo vazeni este na "+ kolVoVazeni + " kola.");
+            System.out.println("Vo vazeni este na "+ kolVoVazeni + " kola.");*/
         }
-        if(kolVoVazeni == 0) {
+        //if(kolVoVazeni == 0) {
+        else{
+            if(kolVoVazeni== 1){
+                kolVoVazeni--;
+            }
             this.informuj(oKolko);
             this.pozicia = this.pozicia + oKolko;
             if (pozicia >= 24) {
@@ -44,16 +49,45 @@ public class Hrac {
         //return pozicia;
     }
 
+    private void stravKoloVoVazeni(){
+        informuj();
+        if (kaucia){
+            Random random= new Random();
+            double cena= random.nextInt(2100)+400;
+            System.out.println("Zaplat kauciu "+ cena + " korun a si volny.");
+            if(cena > ucet){
+                System.out.println("Momentalne nemas na zaplatenie kaucie. Mozno nabuduce.");
+            }
+            else {
+                char volba= Zklavesnice.readChar("Ak chces zaplatit kauciu stlac A, inak N. ");
+                volba= Character.toUpperCase(volba);
+                while(volba != 'A' && volba != 'N'){
+                    System.out.println("Neplatny vstup.");
+                    volba= Zklavesnice.readChar("Ak chces zaplatit kauciu stlac A, inak N. ");
+                    volba= Character.toUpperCase(volba);
+                }
+                if(volba == 'A'){
+                    this.kaucia= false;
+                    this.kolVoVazeni= 1;
+                    zaplatCenu(cena);
+                }
+            }
+        }
+        this.kolVoVazeni--;
+        System.out.println("Vo vazeni este na "+ kolVoVazeni + " kola.");
+    }
+
     public void informuj(int kocka){
         System.out.println("Na tahu je hrac: " + meno);
         System.out.println("Zostatok na ucte: " + ucet);
         System.out.println("Aktualna pozicia: " + pozicia);
-        System.out.println("Na kocke padlo: "+ kocka);
+        System.out.println("Na kocke padlo: "+ Math.abs(kocka));
     }
 
     public void informuj(){
         System.out.println("Na tahu je hrac: " + meno);
         System.out.println("Zostatok na ucte: " + ucet);
+        System.out.println("Policko Vazenie");
     }
 
     public void zaplatCenu(double cena){

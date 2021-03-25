@@ -76,7 +76,7 @@ public class NovaHra {
             }
             else{
                 suma= random.nextInt(5000)+1000;
-                stojne= random.nextInt(2000)+500;
+                stojne= random.nextInt((int) (suma/2))+400;
                 novePolicko= new Nehnutelnost(i, "Nehnutelnost", suma, stojne);
             }
 
@@ -131,16 +131,19 @@ public class NovaHra {
 
                     stojiNa = sachovnica.get(novaPoz);
                     stojiNa.setStojiTam(naTahu);
-                    System.out.println("Policko " + stojiNa.getMeno());
+
+                    //System.out.println("Policko " + stojiNa.getMeno());
 
                     if(naTahu.getKolVoVazeni() == 0) {
+                        System.out.println("Policko " + stojiNa.getMeno());
                         stojiNa.akciaPolicka();
                     }
 
                     if (naTahu.isBankrot()) {
                         naTahu.setvHre(false);
                         hracovVHre = hracovVHre - 1;
-                    } else {
+                    }
+                    else {
                         System.out.println("Zostatok na ucte: " + naTahu.getUcet());
                     }
                     System.out.println("-----------------------------------------");

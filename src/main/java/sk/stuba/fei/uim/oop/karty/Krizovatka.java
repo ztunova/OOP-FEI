@@ -1,9 +1,6 @@
 package sk.stuba.fei.uim.oop.karty;
 
-import sk.stuba.fei.uim.oop.hra.NovaHra;
 import sk.stuba.fei.uim.oop.hra.Zklavesnice;
-
-import java.util.Random;
 
 public class Krizovatka extends Karty{
     private boolean prava;
