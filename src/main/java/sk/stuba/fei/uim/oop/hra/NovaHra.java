@@ -1,10 +1,7 @@
 package sk.stuba.fei.uim.oop.hra;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.*;
-import sk.stuba.fei.uim.oop.karty.Bitka;
-import sk.stuba.fei.uim.oop.karty.Karty;
-import sk.stuba.fei.uim.oop.karty.Krizovatka;
-import sk.stuba.fei.uim.oop.karty.Narodeniny;
+import sk.stuba.fei.uim.oop.karty.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -95,10 +92,14 @@ public class NovaHra {
         Karty narode= new Narodeniny(this.zoznamHracov, popisNarodeniny, "Narodeniny");
         Karty bitka= new Bitka(poisBitka, "Bitka");
         Karty krizovatka= new Krizovatka(popisKrizovatka, "Krizovatka");
+        Karty kaucia= new Kaucia("Kaucia");
+        Karty zlava= new StojneZdarma("Stojne zdarma");
 
         balicek.add(narode);
         balicek.add(bitka);
         balicek.add(krizovatka);
+        balicek.add(kaucia);
+        balicek.add(zlava);
 
         return balicek;
     }

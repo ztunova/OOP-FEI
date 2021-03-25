@@ -40,15 +40,21 @@ public class Nehnutelnost extends Policko {
         else{
             System.out.println("Tato nehnutelnost nie je na predaj. ");
             System.out.println("Majitel: "+ majitel.getMeno());
-            System.out.println("Musis mu zaplatit stojne "+ this.stojne);
-            //na tahu. zaplat stojne, majitel. pripis na ucet
-            if(stojne > stojiTam.getUcet()){
-                System.out.println("Nemas na zaplatenie stojneho. Zbankrotoval si, vypadavas z hry.");
-                stojiTam.setBankrot(true);
-                return;
+            if(stojiTam.isStojneZdarma()){
+                System.out.println("Minas sancu na stojne zdarma. ");
+                this.stojiTam.setStojneZdarma(false);
             }
-            stojiTam.zaplatCenu(this.stojne);
-            majitel.pripisNaUcet(this.stojne);
+            else {
+                System.out.println("Musis mu zaplatit stojne " + this.stojne);
+                //na tahu. zaplat stojne, majitel. pripis na ucet
+                if (stojne > stojiTam.getUcet()) {
+                    System.out.println("Nemas na zaplatenie stojneho. Zbankrotoval si, vypadavas z hry.");
+                    stojiTam.setBankrot(true);
+                    return;
+                }
+                stojiTam.zaplatCenu(this.stojne);
+                majitel.pripisNaUcet(this.stojne);
+            }
         }
 
     }

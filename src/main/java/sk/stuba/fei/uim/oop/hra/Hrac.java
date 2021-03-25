@@ -2,6 +2,8 @@ package sk.stuba.fei.uim.oop.hra;
 
 import sk.stuba.fei.uim.oop.hraciaPlocha.Policko;
 
+import java.util.Random;
+
 public class Hrac {
     private String meno;
     private double ucet;
@@ -9,10 +11,25 @@ public class Hrac {
     private int kolVoVazeni;
     boolean bankrot;
     boolean vHre;
+    boolean kaucia;
+    boolean stojneZdarma;
    // private Policko policko;
 
     public void posunSa(int oKolko){
         if(kolVoVazeni > 0){
+            if(kaucia){
+                Random random= new Random();
+                double cena= random.nextInt(2100)+400;
+                System.out.println("Mas moznost vykupit sa z vazenia.");
+                System.out.println("Kaucia je vo vyske "+ cena+ " korun.");
+                char volba= Zklavesnice.readChar("Ak chces zaplatit kauciu stlac A, inak N. ");
+                volba= Character.toUpperCase(volba);
+                if(volba == 'A'){
+                    this.kaucia= false;
+                    this.kolVoVazeni= 1;
+                    zaplatCenu(cena);
+                }
+            }
             this.informuj();
             this.kolVoVazeni--;
             System.out.println("Vo vazeni este na "+ kolVoVazeni + " kol.");
@@ -50,9 +67,17 @@ public class Hrac {
         this.ucet= this.ucet + suma;
     }
 
-   /* public void setPolicko(Policko policko) {
-        this.policko = policko;
-    }*/
+    public void setStojneZdarma(boolean stojneZdarma) {
+        this.stojneZdarma = stojneZdarma;
+    }
+
+    public void setKaucia(boolean kaucia) {
+        this.kaucia = kaucia;
+    }
+
+    public boolean isStojneZdarma() {
+        return stojneZdarma;
+    }
 
     public boolean isvHre() {
         return vHre;
