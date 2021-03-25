@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop.hra;
 import sk.stuba.fei.uim.oop.hra.Hrac;
 import sk.stuba.fei.uim.oop.hraciaPlocha.Nehnutelnost;
 import sk.stuba.fei.uim.oop.hraciaPlocha.Policko;
-import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
+//import sk.stuba.fei.uim.oop.hraciaPlocha.RohovePolicko;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

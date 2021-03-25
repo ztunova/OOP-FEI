@@ -8,7 +8,7 @@ import java.util.Random;
 
 public abstract class Karty {
     protected String druh;
-    protected String popisAkcie;
+    //protected String popisAkcie;
     protected Hrac ktoVytiahol;
     protected Random random;
 
@@ -18,11 +18,16 @@ public abstract class Karty {
         this.ktoVytiahol = ktoVytiahol;
     }
 
-    public Karty(String meno, String popis){
+    public Karty(String meno){
+        this.druh= meno;
+        this.random= new Random();
+    }
+
+   /* public Karty(String meno, String popis){
         this.druh= meno;
         this.popisAkcie= popis;
         this.random= new Random();
-    }
+    }*/
 
     public Karty(){
         this.random= new Random();

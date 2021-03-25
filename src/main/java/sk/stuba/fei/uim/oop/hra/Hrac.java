@@ -1,7 +1,5 @@
 package sk.stuba.fei.uim.oop.hra;
 
-import sk.stuba.fei.uim.oop.hraciaPlocha.Policko;
-
 import java.util.Random;
 
 public class Hrac {
@@ -13,7 +11,6 @@ public class Hrac {
     boolean vHre;
     boolean kaucia;
     boolean stojneZdarma;
-   // private Policko policko;
 
     public void posunSa(int oKolko){
         if(kolVoVazeni > 0){
@@ -32,7 +29,7 @@ public class Hrac {
             }
             this.informuj();
             this.kolVoVazeni--;
-            System.out.println("Vo vazeni este na "+ kolVoVazeni + " kol.");
+            System.out.println("Vo vazeni este na "+ kolVoVazeni + " kola.");
         }
         if(kolVoVazeni == 0) {
             this.informuj(oKolko);

@@ -22,7 +22,7 @@ public class Nehnutelnost extends Policko {
             //Zklavesnice vstup= new Zklavesnice();
             char volba= Zklavesnice.readChar("Stlac A ak nehnutelnost chces kupit, ak nie, stlac N");
             volba= Character.toUpperCase(volba);
-            System.out.println("zvolil si: "+ volba);
+            //System.out.println("zvolil si: "+ volba);
             switch (volba){
                 case 'A':
                     this.majitel= stojiTam;
@@ -59,18 +59,25 @@ public class Nehnutelnost extends Policko {
 
     }
 
-    public Nehnutelnost(int poradoveCislo, String meno, String popis, double cena, double stojne) {
-        super(poradoveCislo, meno, popis);
+    public Nehnutelnost(int poradoveCislo, String meno, double cena, double stojne) {
+        this.poradoveCislo= poradoveCislo;
+        this.meno= meno;
         this.kupnaCena= cena;
         this.stojne= stojne;
     }
 
-    public Nehnutelnost(double kupnaCena, double stojne) {
+   /* public Nehnutelnost(int poradoveCislo, String meno, String popis, double cena, double stojne) {
+        super(poradoveCislo, meno, popis);
+        this.kupnaCena= cena;
+        this.stojne= stojne;
+    }*/
+
+    /*public Nehnutelnost(double kupnaCena, double stojne) {
         this.kupnaCena = kupnaCena;
         this.stojne= stojne;
         this.kupena= false;
         this.majitel= null;
-    }
+    }*/
 
     public Nehnutelnost(){
         this.kupena= false;

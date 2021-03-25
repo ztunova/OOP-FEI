@@ -14,6 +14,7 @@ public class Sance extends Policko {
 
     @Override
     public void akciaPolicka() {
+        System.out.println("Tahas si kartu");
         if(this.tahaciBalicek.isEmpty()){
             zamiesajKarty();
         }
@@ -31,15 +32,22 @@ public class Sance extends Policko {
         Collections.shuffle(tahaciBalicek, new Random());
     }
 
-    public Sance(int poradoveCislo, String meno, String popis, ArrayList<Karty> balicek, ArrayList<Karty> tahaci) {
-        super(poradoveCislo, meno, popis);
+    public Sance(int poradoveCislo, String meno, ArrayList<Karty> balicek, ArrayList<Karty> tahaci) {
+        this.poradoveCislo= poradoveCislo;
+        this.meno= meno;
         this.odhadzovaciBalicek= balicek;
         this.tahaciBalicek= tahaci;
     }
 
-    public Sance(int poradoveCislo, String meno, String popis) {
+   /* public Sance(int poradoveCislo, String meno, String popis, ArrayList<Karty> balicek, ArrayList<Karty> tahaci) {
         super(poradoveCislo, meno, popis);
-    }
+        this.odhadzovaciBalicek= balicek;
+        this.tahaciBalicek= tahaci;
+    }*/
+
+    /*public Sance(int poradoveCislo, String meno, String popis) {
+        super(poradoveCislo, meno, popis);
+    }*/
 
     public Sance(){}
 }

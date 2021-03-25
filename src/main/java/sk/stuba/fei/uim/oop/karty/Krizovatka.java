@@ -12,13 +12,19 @@ public class Krizovatka extends Karty{
     @Override
     public void akciaKarty() {
         generKrizovatku();
-        System.out.println(this.popisAkcie);
-        //Zklavesnice vstup= new Zklavesnice();
+        //System.out.println(this.popisAkcie);
+
+        System.out.println("Efekt vytiahnutej karty: ");
+        System.out.println("Stojis pred dolezitym rozhodnutim. Pred tebou je krizovatka. Mozes pokracovat bud lavou alebo pravou cestou.");
+        //System.out.println("Mozes pokracovat bud lavou alebo pravou cestou. Volba je na tebe ale vyberaj pozorne.");
+        System.out.println("Volba je na tebe ale vyberaj pozorne. Jedna cesta ta zavedie dalej ale ta druha je slepa a budes sa musiet vratit.");
+        System.out.println("Kolko padne na kocke, o tolko policok sa posunies bud dopredu alebo dozadu.");
+
         char volba= Zklavesnice.readChar("Zadaj L ak chces pokracovat lavou cestou, P ak si si vybral pravu cestu");
         volba= Character.toUpperCase(volba);
-        System.out.println("Hadz kockou o kolko policok sa posunies bud dopredu alebo dozadu.");
         int kocka= random.nextInt(5)+1;
         System.out.println("Na kocke padlo: "+ kocka);
+
         switch (volba){
             case 'L':
                 if(lava){
@@ -50,8 +56,12 @@ public class Krizovatka extends Karty{
         this.lava= !prava;
     }
 
-    public Krizovatka(String popis, String meno){
+    /*public Krizovatka(String popis, String meno){
         this.popisAkcie= popis;
+        this.druh= meno;
+    }*/
+
+    public Krizovatka(String meno){
         this.druh= meno;
     }
 
