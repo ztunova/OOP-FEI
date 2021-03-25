@@ -26,7 +26,7 @@ public class Sance extends Policko {
     }
 
     private void zamiesajKarty(){
-        int i;
+        //int i;
         tahaciBalicek.addAll(odhadzovaciBalicek);
         odhadzovaciBalicek.clear();
         Collections.shuffle(tahaciBalicek, new Random());

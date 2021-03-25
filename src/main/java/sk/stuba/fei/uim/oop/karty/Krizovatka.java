@@ -19,6 +19,13 @@ public class Krizovatka extends Karty{
 
         char volba= Zklavesnice.readChar("Zadaj L ak chces pokracovat lavou cestou, P ak si si vybral pravu cestu");
         volba= Character.toUpperCase(volba);
+
+        while(volba != 'L' && volba != 'P'){
+            System.out.println("Neplatny vstup.");
+            volba= Zklavesnice.readChar("Zadaj L ak chces pokracovat lavou cestou, P ak si si vybral pravu cestu");
+            volba= Character.toUpperCase(volba);
+        }
+
         int kocka= random.nextInt(5)+1;
         System.out.println("Na kocke padlo: "+ kocka);
 
