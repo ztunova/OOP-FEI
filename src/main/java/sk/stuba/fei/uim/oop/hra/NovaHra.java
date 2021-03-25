@@ -49,6 +49,7 @@ public class NovaHra {
 
         double suma, stojne;
         Policko novePolicko;
+        ArrayList<Karty> tahaci= new ArrayList<Karty>();
 
         for(int i= 0; i< 24; i++){
             if(i% 6 == 0){
@@ -69,7 +70,7 @@ public class NovaHra {
                 ktory++;
             }
             else if (i% 6 == 3){
-                novePolicko= new Sance(i, "Sanca", "Tahas si kartu", balicek);
+                novePolicko= new Sance(i, "Sanca", "Tahas si kartu", balicek, tahaci);
             }
             else{
                 suma= random.nextInt(5000)+1000;
@@ -82,7 +83,7 @@ public class NovaHra {
     }
 
     private ArrayList<Karty> generKarty(){
-        ArrayList<Karty> balicek= new ArrayList<Karty>(5);
+        ArrayList<Karty> balicek= new ArrayList<Karty>(3);
         String popisNarodeniny= "Vsetko najlepsie k narodeninam! Ako darcek dostanes 400 kroun od kazdeho hraca, " +
                                 "ktory ma na ucte viac ako 400 korun";
         String popisKrizovatka= "Stojis pred dolezitym rozhodnutim. Pred tebou je krizovatka. Mozes pokracovat" +
@@ -103,8 +104,9 @@ public class NovaHra {
     }
 
     public void zacniHru(){
-        generSachovnicu();
+        //generSachovnicu();
         nacitajHracov();
+        generSachovnicu();
         this.hracovVHre= pocetHracov;
 
         int i, hodKockou, novaPoz;
