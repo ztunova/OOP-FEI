@@ -33,20 +33,24 @@ public class Krizovatka extends Karty{
             case 'L':
                 if(lava){
                     //posun sa dalej
+                    System.out.println("Vybral si spravnu cestu.");
                     this.ktoVytiahol.posunSa(kocka);
                 }
                 else{
                     //vrat sa naspat
+                    System.out.println("Vybral si zlu cestu, musis sa vratit.");
                     this.ktoVytiahol.posunSa(-kocka);
                 }
                 break;
             case 'P':
                 if(prava){
                     //posun sa dalej
+                    System.out.println("Vybral si spravnu cestu.");
                     this.ktoVytiahol.posunSa(kocka);
                 }
                 else{
                     //vrat sa naspat
+                    System.out.println("Vybral si zlu cestu, musis sa vratit.");
                     this.ktoVytiahol.posunSa(-kocka);
                 }
                 break;

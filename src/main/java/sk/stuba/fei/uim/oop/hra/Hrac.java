@@ -11,6 +11,7 @@ public class Hrac {
     private boolean vHre;
     private boolean kaucia;
     private boolean stojneZdarma;
+    private int zranenychKol;
 
     public void posunSa(int oKolko){
         if(kolVoVazeni > 1){
@@ -38,8 +39,16 @@ public class Hrac {
                 kolVoVazeni--;
             }
             this.informuj(oKolko);
+            if(zranenychKol > 0 && oKolko > 1){
+                oKolko= oKolko/2;
+                zranenychKol--;
+                System.out.println("Hybes sa o "+oKolko + " polovicna vzdialenost este "+ zranenychKol + " kola" );
+            }
             this.pozicia = this.pozicia + oKolko;
-            if (pozicia >= 24) {
+            if(pozicia == 24){
+                this.pozicia = 0;
+            }
+            if (pozicia > 24) {
                 System.out.println("Pripisujem na ucet za prechod startom");
                 this.pripisNaUcet(2000);
                 this.pozicia = this.pozicia % 24;
@@ -84,7 +93,7 @@ public class Hrac {
         System.out.println("Na kocke padlo: "+ Math.abs(kocka));
     }
 
-    public void informuj(){
+    private void informuj(){
         System.out.println("Na tahu je hrac: " + meno);
         System.out.println("Zostatok na ucte: " + ucet);
         System.out.println("Policko Vazenie");
@@ -96,6 +105,10 @@ public class Hrac {
 
     public void pripisNaUcet(double suma){
         this.ucet= this.ucet + suma;
+    }
+
+    public void setZranenychKol(int zranenychKol) {
+        this.zranenychKol = zranenychKol;
     }
 
     public void setStojneZdarma(boolean stojneZdarma) {

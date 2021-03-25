@@ -52,18 +52,32 @@ public class Nehnutelnost extends Policko {
                 this.stojiTam.setStojneZdarma(false);
             }
             else {
-                System.out.println("Musis mu zaplatit stojne " + this.stojne);
-                //na tahu. zaplat stojne, majitel. pripis na ucet
-                if (stojne > stojiTam.getUcet()) {
-                    System.out.println("Nemas na zaplatenie stojneho. Zbankrotoval si, vypadavas z hry.");
-                    stojiTam.setBankrot(true);
-                    return;
+                if(this.majitel != this.stojiTam) {
+                    System.out.println("Musis mu zaplatit stojne " + this.stojne);
+                    //na tahu. zaplat stojne, majitel. pripis na ucet
+                    if (stojne > stojiTam.getUcet()) {
+                        System.out.println("Nemas na zaplatenie stojneho. Zbankrotoval si, vypadavas z hry.");
+                        stojiTam.setBankrot(true);
+                        return;
+                    }
+                    stojiTam.zaplatCenu(this.stojne);
+                    majitel.pripisNaUcet(this.stojne);
                 }
-                stojiTam.zaplatCenu(this.stojne);
-                majitel.pripisNaUcet(this.stojne);
             }
         }
 
+    }
+
+    public Hrac getMajitel() {
+        return majitel;
+    }
+
+    public void setMajitel(Hrac majitel) {
+        this.majitel = majitel;
+    }
+
+    public void setKupena(boolean kupena) {
+        this.kupena = kupena;
     }
 
     public Nehnutelnost(int poradoveCislo, String meno, double cena, double stojne) {

@@ -113,6 +113,15 @@ public class NovaHra {
         return balicek;
     }
 
+    private void zrusMajetky(Hrac vypadnuty){
+        for (Policko policko : sachovnica){
+            if(policko instanceof Nehnutelnost && ((Nehnutelnost) policko).getMajitel() == vypadnuty){
+                ((Nehnutelnost) policko).setKupena(false);
+                ((Nehnutelnost) policko).setMajitel(null);
+            }
+        }
+    }
+
     public void zacniHru(){
         nacitajHracov();
         generSachovnicu();
@@ -126,6 +135,7 @@ public class NovaHra {
             for (Hrac naTahu : zoznamHracov) {
                 if(naTahu.isvHre()) {
                     hodKockou = random.nextInt(5) + 1;
+                    //naTahu.informuj(hodKockou);
                     naTahu.posunSa(hodKockou);
                     novaPoz = naTahu.getPozicia();
 
@@ -140,8 +150,12 @@ public class NovaHra {
                     }
 
                     if (naTahu.isBankrot()) {
+                        zrusMajetky(naTahu);
                         naTahu.setvHre(false);
                         hracovVHre = hracovVHre - 1;
+                        if(hracovVHre == 1){
+                            break;
+                        }
                     }
                     else {
                         System.out.println("Zostatok na ucte: " + naTahu.getUcet());
@@ -153,8 +167,9 @@ public class NovaHra {
 
         System.out.println("---------------KONIEC HRY----------------");
         for (Hrac vitaz : zoznamHracov) {
+            //System.out.println(vitaz.getMeno());
             if(vitaz.isvHre()) {
-                System.out.println("Gratulujem, vyhral hrac: " + zoznamHracov.get(0).getMeno());
+                System.out.println("Gratulujem, vyhral hrac: " + vitaz.getMeno());
             }
         }
     }

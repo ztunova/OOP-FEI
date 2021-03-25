@@ -9,7 +9,7 @@ public class Policia extends Policko{
     public void akciaPolicka() {
         Random random= new Random();
         this.pocetKol = random.nextInt(5) + 1;
-        System.out.println("Ides do vazenia na "+ pocetKol + " kol.");
+        System.out.println("Ides do vazenia na "+ pocetKol + " kola.");
 
         stojiTam.setPozicia(6);
         stojiTam.setKolVoVazeni(pocetKol);
