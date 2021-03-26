@@ -1,6 +1,5 @@
 package sk.stuba.fei.uim.oop.hraciaPlocha;
 
-import sk.stuba.fei.uim.oop.hra.Hrac;
 import sk.stuba.fei.uim.oop.karty.Karty;
 
 import java.util.ArrayList;
@@ -8,9 +7,8 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Sance extends Policko {
-    String akcia;
-    ArrayList<Karty> tahaciBalicek;
-    ArrayList<Karty> odhadzovaciBalicek;
+    private ArrayList<Karty> tahaciBalicek;
+    private ArrayList<Karty> odhadzovaciBalicek;
 
     @Override
     public void akciaPolicka() {
@@ -26,7 +24,6 @@ public class Sance extends Policko {
     }
 
     private void zamiesajKarty(){
-        //int i;
         tahaciBalicek.addAll(odhadzovaciBalicek);
         odhadzovaciBalicek.clear();
         Collections.shuffle(tahaciBalicek, new Random());
@@ -38,16 +35,6 @@ public class Sance extends Policko {
         this.odhadzovaciBalicek= balicek;
         this.tahaciBalicek= tahaci;
     }
-
-   /* public Sance(int poradoveCislo, String meno, String popis, ArrayList<Karty> balicek, ArrayList<Karty> tahaci) {
-        super(poradoveCislo, meno, popis);
-        this.odhadzovaciBalicek= balicek;
-        this.tahaciBalicek= tahaci;
-    }*/
-
-    /*public Sance(int poradoveCislo, String meno, String popis) {
-        super(poradoveCislo, meno, popis);
-    }*/
 
     public Sance(){}
 }

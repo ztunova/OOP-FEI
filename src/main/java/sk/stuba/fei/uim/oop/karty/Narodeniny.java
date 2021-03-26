@@ -9,7 +9,6 @@ public class Narodeniny extends Karty{
 
     @Override
     public void akciaKarty() {
-        //System.out.println(this.popisAkcie);
         System.out.println("Efekt vytiahnutej karty: ");
         System.out.println("Vsetko najlepsie k narodeninam! Ako darcek dostanes 400 kroun od kazdeho hraca, ktory ma na ucte viac ako 400 korun");
 
@@ -20,12 +19,6 @@ public class Narodeniny extends Karty{
             }
         }
     }
-
-    /*public Narodeniny(ArrayList<Hrac> hraci, String popis, String meno){
-        this.popisAkcie= popis;
-        this.druh= meno;
-        this.zoznamHracov= hraci;
-    }*/
 
     public Narodeniny(ArrayList<Hrac> hraci, String meno){
         this.druh= meno;

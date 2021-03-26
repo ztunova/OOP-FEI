@@ -19,10 +19,8 @@ public class Nehnutelnost extends Policko {
                 return;
             }
 
-            //Zklavesnice vstup= new Zklavesnice();
             char volba= Zklavesnice.readChar("Stlac A ak nehnutelnost chces kupit, ak nie, stlac N");
             volba= Character.toUpperCase(volba);
-            //System.out.println("zvolil si: "+ volba);
 
             while(volba != 'A' && volba != 'N'){
                 System.out.println("Neplatny vstup.");
@@ -47,14 +45,13 @@ public class Nehnutelnost extends Policko {
         else{
             System.out.println("Tato nehnutelnost nie je na predaj. ");
             System.out.println("Majitel: "+ majitel.getMeno());
-            if(stojiTam.isStojneZdarma()){
+            if(stojiTam.isStojneZdarma() && this.majitel != this.stojiTam){
                 System.out.println("Minas sancu na stojne zdarma. ");
                 this.stojiTam.setStojneZdarma(false);
             }
             else {
                 if(this.majitel != this.stojiTam) {
                     System.out.println("Musis mu zaplatit stojne " + this.stojne);
-                    //na tahu. zaplat stojne, majitel. pripis na ucet
                     if (stojne > stojiTam.getUcet()) {
                         System.out.println("Nemas na zaplatenie stojneho. Zbankrotoval si, vypadavas z hry.");
                         stojiTam.setBankrot(true);
@@ -86,19 +83,6 @@ public class Nehnutelnost extends Policko {
         this.kupnaCena= cena;
         this.stojne= stojne;
     }
-
-   /* public Nehnutelnost(int poradoveCislo, String meno, String popis, double cena, double stojne) {
-        super(poradoveCislo, meno, popis);
-        this.kupnaCena= cena;
-        this.stojne= stojne;
-    }*/
-
-    /*public Nehnutelnost(double kupnaCena, double stojne) {
-        this.kupnaCena = kupnaCena;
-        this.stojne= stojne;
-        this.kupena= false;
-        this.majitel= null;
-    }*/
 
     public Nehnutelnost(){
         this.kupena= false;

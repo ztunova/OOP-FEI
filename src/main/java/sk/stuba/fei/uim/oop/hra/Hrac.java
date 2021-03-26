@@ -16,24 +16,7 @@ public class Hrac {
     public void posunSa(int oKolko){
         if(kolVoVazeni > 1){
             stravKoloVoVazeni();
-            /*if(kaucia){
-                Random random= new Random();
-                double cena= random.nextInt(2100)+400;
-                System.out.println("Mas moznost vykupit sa z vazenia.");
-                System.out.println("Kaucia je vo vyske "+ cena+ " korun.");
-                char volba= Zklavesnice.readChar("Ak chces zaplatit kauciu stlac A, inak N. ");
-                volba= Character.toUpperCase(volba);
-                if(volba == 'A'){
-                    this.kaucia= false;
-                    this.kolVoVazeni= 1;
-                    zaplatCenu(cena);
-                }
-            }
-            this.informuj();
-            this.kolVoVazeni--;
-            System.out.println("Vo vazeni este na "+ kolVoVazeni + " kola.");*/
         }
-        //if(kolVoVazeni == 0) {
         else{
             if(kolVoVazeni== 1){
                 kolVoVazeni--;
@@ -42,7 +25,7 @@ public class Hrac {
             if(zranenychKol > 0 && oKolko > 1){
                 oKolko= oKolko/2;
                 zranenychKol--;
-                System.out.println("Hybes sa o "+oKolko + " polovicna vzdialenost este "+ zranenychKol + " kola" );
+                System.out.println("Hybes sa o "+oKolko + " policka. Polovicna vzdialenost este "+ zranenychKol + " kola" );
             }
             this.pozicia = this.pozicia + oKolko;
             if(pozicia == 24){
@@ -55,7 +38,27 @@ public class Hrac {
             }
             System.out.println("Nova pozicia: " + pozicia);
         }
-        //return pozicia;
+    }
+
+    private void posunSa(){
+        Random random= new Random();
+        int oKolko= random.nextInt(5)+1;
+        this.informuj(oKolko);
+        if(zranenychKol > 0 && oKolko > 1){
+            oKolko= oKolko/2;
+            zranenychKol--;
+            System.out.println("Hybes sa o "+oKolko + " policka. Polovicna vzdialenost este "+ zranenychKol + " kola" );
+        }
+        this.pozicia = this.pozicia + oKolko;
+        if(pozicia == 24){
+            this.pozicia = 0;
+        }
+        if (pozicia > 24) {
+            System.out.println("Pripisujem na ucet za prechod startom");
+            this.pripisNaUcet(2000);
+            this.pozicia = this.pozicia % 24;
+        }
+        System.out.println("Nova pozicia: " + pozicia);
     }
 
     private void stravKoloVoVazeni(){
@@ -79,6 +82,7 @@ public class Hrac {
                     this.kaucia= false;
                     this.kolVoVazeni= 1;
                     zaplatCenu(cena);
+                    posunSa();
                 }
             }
         }
