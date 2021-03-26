@@ -10,6 +10,13 @@ public class Sance extends Policko {
     private ArrayList<Karty> tahaciBalicek;
     private ArrayList<Karty> odhadzovaciBalicek;
 
+/*
+ked hrac zastane na policku Sanca potiahne si kartu z tahacieho balicka, vykona sa akcia danej karty a odlozi sa
+do odhadzovacieho balicka. Metoda akciaPolicka este predtym skontroluje, ci je tahaci balicek prazdny. V pripade, ze ano,
+prehodi obsah odhadzovacieho balicka do tahacieho a karty "zamiesa" pomocou shuffle.
+Kedze vsetky policka sance obsahuju pointer na rovnake balicky (dostanu ho v konstruktore), zmena balickov z jedneho
+policka sa prejavi aj na ostatnych polickach sance
+ */
     @Override
     public void akciaPolicka() {
         System.out.println("Tahas si kartu");

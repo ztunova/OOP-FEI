@@ -13,7 +13,9 @@ public class NovaHra {
     private ArrayList<Hrac> zoznamHracov;
     private ArrayList<Policko> sachovnica;
 
-
+/*
+nacitanie daneho poctu hracov a ich mien. Zoznam hracov je atributom hry. Kazdy hrac zacina so sumou 5000
+ */
     private void nacitajHracov(){
         this.pocetHracov= Zklavesnice.readInt("zadaj pocet hracov: ");
         this.zoznamHracov= new ArrayList<Hrac>(pocetHracov);
@@ -34,6 +36,16 @@ public class NovaHra {
 
     }
 
+/*
+vytvorenie sachovnice: 24 policok
+Rohove policka su v poradi Start, Vazenie, Policia, Platba dane (v smere hodinovych ruciciek)
+Policka sance su vzdy v strede medzi rohovymi polickami (3. v poradi od rohu)
+Ostatne su nehnutelnosti
+Pri prechode startom sa pripisuje hracovi fixna cena 2000
+Vyska dane je tiez fixna 900
+Cena nehnutelnosti a stojneho na nej sa generuje nahodne pre kazdu nehnutelnost
+Zoznam vsetkych policok = sachovnica je atributom hry
+ */
     private void generSachovnicu(){
         ArrayList<Karty> balicek= generKarty();
         this.sachovnica= new ArrayList<Policko>(24);
@@ -72,6 +84,12 @@ public class NovaHra {
         }
     }
 
+/*
+Vytvorenie zoznamu kariet
+Zoznam kariet je atributom policka Sanca - kazde policko sanca obsahuje pointer na rovnaky zoznam kariet
+Vytvori sa "odhadzovaci" balicek - obsahuje 5 ks kariet, kazda karta samostatneho druhu
+Vymenu odhadzovacieho balicka s tahacim (ked je prazdny) riesi policko Sanca
+ */
     private ArrayList<Karty> generKarty(){
         ArrayList<Karty> balicek= new ArrayList<Karty>(3);
 
@@ -90,6 +108,10 @@ public class NovaHra {
         return balicek;
     }
 
+/*
+metoda, ktora v pripade, ze je nejaky hrac vyhodeny z hry, prejde celu sachovnicu, pohlada nehnutelnosti
+ktore vyradeny hrac vlastnil a oznaci, ze su volne, na predaj
+ */
     private void zrusMajetky(Hrac vypadnuty){
         for (Policko policko : sachovnica){
             if(policko instanceof Nehnutelnost && ((Nehnutelnost) policko).getMajitel() == vypadnuty){
@@ -99,6 +121,11 @@ public class NovaHra {
         }
     }
 
+/*
+metoda ktora simuluje samotnu hru - urcenie hracov, vytvorenie sachovnice, hraci sa striedaju na tahu, pricom sa
+vykonava akcia policka na ktore stupili, pripadne sa nevykonava, pokial hrac stoji vo vazeni.
+Zaroven kontroluje, ci hrac vypadol z hry alebo nie. Na konci vypise vitaza
+ */
     public void zacniHru(){
         nacitajHracov();
         generSachovnicu();
@@ -141,7 +168,6 @@ public class NovaHra {
 
         System.out.println("---------------KONIEC HRY----------------");
         for (Hrac vitaz : zoznamHracov) {
-            //System.out.println(vitaz.getMeno());
             if(vitaz.isvHre()) {
                 System.out.println("Gratulujem, vyhral hrac: " + vitaz.getMeno());
             }

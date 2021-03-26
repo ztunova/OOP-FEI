@@ -5,6 +5,9 @@ import java.util.Random;
 public class Policia extends Policko{
     private int pocetKol;
 
+/*
+Nastavi hracovi nejaky pocet kol kolko bude stat a presunie ho na policko vazenia. Pocet kol je nahodne cislo od 1 do 6
+ */
     @Override
     public void akciaPolicka() {
         Random random= new Random();

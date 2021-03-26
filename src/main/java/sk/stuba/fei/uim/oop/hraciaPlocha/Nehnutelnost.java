@@ -9,6 +9,16 @@ public class Nehnutelnost extends Policko {
     private double kupnaCena;
     private double stojne;
 
+/*
+kontroluje ci je dana nehnutelnost na predaj.
+Ak este nie je kupena, ponukne hracovi ci si ju chce kupit (pokial na to ma). Ak ju chce kupit tak za nu zaplati a stane
+sa jej majitelom, ak ju nechce kupit nic sa nedeje.
+Ak je nehnutelnost uz predana inemu hracovi, metoda kontroluje ci je hrac, ktory tu stoji zaroven jej majitelom -> potom
+neplati stojne. Pripadne ci ma hrac sancu stojneho zdarma - vtedy stojne neplati ale tato moznost sa mu zrusi => dalsie
+stojne uz bude musiet paltit.
+Ak hrac nie je ani majitel ani nema stojne zdarma tak zaplati za stojne, pricom sa este kontroluje, ci ma na ucte dost
+aby stojne zaplatil - ak nie, vypadava z hry
+ */
     @Override
     public void akciaPolicka() {
         if (!kupena){

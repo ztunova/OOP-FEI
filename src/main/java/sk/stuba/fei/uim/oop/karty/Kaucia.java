@@ -1,6 +1,12 @@
 package sk.stuba.fei.uim.oop.karty;
 
 public class Kaucia extends Karty{
+
+/*
+Karta Kaucia: hracovi sa v jeho atributoch nastavi moznost zaplatit za seba kauciu ked sa dostane do vazenia
+Kartu je mozne vyuzit az od prveho kola po tom, co bude uvazneny.
+Po vyuziti tejto moznosti, zaplati stanovenu sumu a moze pokracovat vo svojom tahu.
+ */
     @Override
     public void akciaKarty() {
         System.out.println("Efekt vytiahnutej karty: ");

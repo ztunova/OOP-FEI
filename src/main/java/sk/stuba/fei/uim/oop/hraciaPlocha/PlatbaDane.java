@@ -3,6 +3,9 @@ package sk.stuba.fei.uim.oop.hraciaPlocha;
 public class PlatbaDane extends Policko{
     private double suma;
 
+/*
+Skontroluje sa ci ma hrac dostatok penazi na ucte aby zaplatil dan - ak ma tak ju zaplati, ak nema, zbankrotuje a vypadava z hry
+ */
     @Override
     public void akciaPolicka() {
         System.out.println("Platba dane "+ suma + " korun");

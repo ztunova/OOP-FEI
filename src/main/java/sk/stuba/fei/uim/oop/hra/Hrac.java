@@ -13,6 +13,16 @@ public class Hrac {
     private boolean stojneZdarma;
     private int zranenychKol;
 
+/*
+    Metoda, ktora posuva hraca po hracom poli, pokial sa nenachadza vo vazeni. Najskor sa skontroluje, ci je vo vazeni,
+    vtedy hrac stravi kolo vo vazeni - skontroluje sa mu ci ma moznost vyplatit sa kauciou.
+    Ak ma tuto moznost vygeneruje sa nahodna suma ktoru musi zaplatit. Ak nema na to, aby ju zaplatil, nic sa nedeje,
+    tato moznost mu ostane do buducna a znizi sa mu pocet kol ktore musi este stravit vo vazeni.
+    Ak ma na kauciu a rozhodne sa ju zaplatit, moze pokracovat vo svojom tahu - hadze kockou, hybe sa.
+    Ak hrac nie je vo vazeni, prepocita sa mu nova pozicia, podla toho kolko hodil na kocke.
+    Ak si hrac predtym vytiahol kartu Bitka, hybe sa len o polovicny pocet policok (vid trieda Bitka).
+    Ked prejde startom (ale nezastane na nom), pripocita sa mu na ucet odmena za prechod startom - fixna cena 2000
+ */
     public void posunSa(int oKolko){
         if(kolVoVazeni > 1){
             stravKoloVoVazeni();
@@ -90,6 +100,9 @@ public class Hrac {
         System.out.println("Vo vazeni este na "+ kolVoVazeni + " kola.");
     }
 
+/*
+Pomocne funkcie pre vypis
+ */
     public void informuj(int kocka){
         System.out.println("Na tahu je hrac: " + meno);
         System.out.println("Zostatok na ucte: " + ucet);
